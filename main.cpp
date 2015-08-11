@@ -1,7 +1,7 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <stdio.h>
-#include <Shader_Manager.h>
+#include <Managers/Shader_Manager.h>
 
 int main(){
 	//initializing everything
@@ -39,9 +39,8 @@ int main(){
 
 	//Shader stuff
 	//associate Vertex Shader
-	GLuint vs = glCreateShader(GL_VERTEX_SHADER);
-	glShaderSource(vs, 1, &vertex_shader, NULL);
-	glCompileShader(vs);
+	Managers::Shader_Manager shaderProgram;
+	shaderProgram.CreateProgram("Initial Shader", "Shaders\\vertex.vs", "Shaders\\fragment.frag");
 
 	//associate and compile Fragment Shader
 	GLuint fs = glCreateShader(GL_FRAGMENT_SHADER);
